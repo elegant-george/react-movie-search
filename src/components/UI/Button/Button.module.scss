@@ -1,0 +1,23 @@
+.Button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font: inherit;
+    padding: 10px;
+    margin: 10px;
+    font-weight: bold;
+
+    &:disabled {
+        color: #ccc;
+        cursor: not-allowed;
+    }
+}
+
+.Auth {
+    color: #5C9210;
+}
+
+.Search {
+    color: rgba(98, 84, 221, 0.767)
+}

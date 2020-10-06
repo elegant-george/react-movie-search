@@ -1,0 +1,49 @@
+.Menu {
+    position: absolute;
+    width: 200px;
+    height: 100px;
+    max-width: 100%;
+    right: 0;
+    top: 0;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-sizing: border-box;
+    border-radius:  0 0 0 5px  ;
+    z-index: 300;
+
+
+    ul {
+        padding: 0;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      li {
+        margin: 5px 0;
+        font-size: 0.8rem;
+      }
+      button{
+        background-color: transparent;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        font: inherit;
+        font-weight: bold;
+        color: black;
+        margin: 0 0 0 1rem;
+          &:disabled {
+            color: rgba(0,0,0, 0.2);
+            cursor: default;
+        }
+      }
+
+}
+
+.Open {
+    display: inline;
+}
+
+.Close {
+    display: none;
+}

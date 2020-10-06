@@ -1,26 +1,66 @@
-import React from 'react';
-import {Route} from 'react-router-dom';
+import React, {useEffect} from 'react';
+import {Route, Switch, withRouter, Redirect} from 'react-router-dom';
+import { connect } from 'react-redux';
 import './App.css';
-import Header from "./components/Header/Header";
-import SearchPage from './container/SearchPage/SearchPage';
-import QueuePage from './container/QueuePage/QueuePage';
-import WatchedPage from './container/WatchedPage/WatchedPage';
-import SignupPage from './container/SignupPage/SignupPage';
-import LoginPage from './container/LoginPage/LoginPage';
+import Header from "./container/Header/Header";
+import Search from './container/Search/Search';
+import ListPage from './container/ListPage/ListPage';
+import Auth from './container/Auth/Auth';
+import Footer from "./container/Footer/Footer";
+import * as actions from './store/actions/index';
 
 const App = props => {
+  const { onTryAutoSignup } = props;
+
+  useEffect(() => {
+    onTryAutoSignup();
+  }, [onTryAutoSignup]);
+
+  let routes = (
+    <Switch>
+      <Route path='/signup' component={() => <Auth isSignup={true}/>} />
+      <Route path='/login' component={() => <Auth isSignup={false}/>} />
+      <Route path="/" exact component={Search} />
+      <Redirect to="/" />
+    </Switch>
+  );
+
+  if (props.isLogined) {
+    routes = (
+      <Switch>
+        <Route path='/' component={Search} exact />
+        <Route path='/queue' component={() => <ListPage listType={"queue"}/>} />
+        <Route path='/watched' component={() => <ListPage listType={"watched"}/>} />
+        <Redirect to="/" />
+      </Switch>)
+  }
+
   return (
     <React.Fragment>
       <Header />
       <main>
-        <Route path='/' component={SearchPage} exact />
-        <Route path='/queue' component={QueuePage} />
-        <Route path='/watched' component={WatchedPage} />
-        <Route path='/signup' component={SignupPage} />
-        <Route path='/login' component={LoginPage} />
+        {routes}
       </main>
+      <Footer />
     </React.Fragment>
   );
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    isLogined: state.auth.token !== null
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onTryAutoSignup: () => dispatch(actions.authCheckState())
+  };
+};
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(App)
+);

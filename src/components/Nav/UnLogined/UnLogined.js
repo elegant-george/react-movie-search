@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import {activeColor} from '../../../shared/constWord'
 
 const UnLogined = props => {
   return (
@@ -7,11 +8,11 @@ const UnLogined = props => {
         <ul>
           <li>
             <NavLink to="/login"
-              activeStyle={{color: '#560061'}}>login</NavLink>
+              activeStyle={{color: activeColor}}>login</NavLink>
           </li>
           <li>
             <NavLink to="/signup"
-              activeStyle={{color: '#560061'}}>signup</NavLink>
+              activeStyle={{color: activeColor}}>signup</NavLink>
           </li>
         </ul>
     </nav>

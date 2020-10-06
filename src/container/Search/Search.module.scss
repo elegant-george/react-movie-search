@@ -1,0 +1,15 @@
+.Search {
+    position: relative;
+    top: 3rem;
+    margin: 0 auto;
+    width: 80%;
+    text-align: center;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+@media (min-width: 600px) {
+    .Search {
+        width: 500px;
+    }
+}

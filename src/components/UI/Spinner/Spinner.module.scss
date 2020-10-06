@@ -1,0 +1,33 @@
+$Big-border: 16px;
+$Big-size: 120px;
+$Small-border: 4px;
+$Small-size: 30px;
+
+.Loader {
+  border:  solid #e4e4e4; /* Light grey */
+  border-top: solid #3ca1e4de; /* Blue */
+  border-radius: 50%;
+  animation: spin 1s ease infinite;
+
+}
+
+.Big {
+  margin: 20px auto;
+  width: $Big-size;
+  height: $Big-size;
+  border-width: $Big-border;
+  border-top-width: $Big-border;
+}
+
+.Small {
+  margin:  30px auto;
+  width: $Small-size;
+  height: $Small-size;
+  border-width: $Small-border;
+  border-top-width: $Small-border;
+}
+
+@keyframes spin {
+  0% { transform: rotate(180deg); }
+  100% { transform: rotate(-180deg); }
+}

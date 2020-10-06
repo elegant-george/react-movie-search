@@ -1,0 +1,1 @@
+export const activeColor = "#1331ddd3";
