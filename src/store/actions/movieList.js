@@ -45,7 +45,6 @@ export const addToList = (movieData, imdbID, userId, token, toWhich) => {
         {movieData: movieData, toWhich: toWhich})
         .then(() => {
             dispatch(addSuccess(movieData, imdbID, toWhich));
-            console.log('success');
         })
         .catch(err => {
             dispatch(listFailed(err));

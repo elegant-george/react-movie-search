@@ -16,7 +16,8 @@ const Input = ( props ) => {
                 className={inputClasses.join(' ')}
                 {...props.elementConfig}
                 value={props.value}
-                onChange={props.changed} />;
+                onChange={props.changed}
+                autoComplete='off'/>;
             break;
         case ( 'textarea' ):
             inputElement = <textarea
@@ -44,7 +45,8 @@ const Input = ( props ) => {
                 className={inputClasses.join(' ')}
                 {...props.elementConfig}
                 value={props.value}
-                onChange={props.changed} />;
+                onChange={props.changed}
+                autoComplete='off'/>;
     }
 
     return (

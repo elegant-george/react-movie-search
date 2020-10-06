@@ -38,6 +38,12 @@ const authFail = (state, action) => {
     };
 };
 
+const authClearError = (state, action) => {
+    return {...state,
+        ...{error: null}
+    };
+};
+
 const authLogout = (state, action) => {
     return {...state, ...{ token: null, userId: null }};
 };
@@ -60,6 +66,7 @@ const reducer = ( state = initialState, action ) => {
         case actionTypes.AUTH_SUCCESS: return authSuccess(state, action);
         case actionTypes.AUTH_SET_NAME: return authSetName(state, action);
         case actionTypes.AUTH_FAIL: return authFail(state, action);
+        case actionTypes.AUTH_CLEAR_ERROR: return authClearError(state, action);
         case actionTypes.AUTH_LOGOUT: return authLogout(state, action);
         case actionTypes.SET_AUTH_REDIRECT_PATH: return setAuthRedirectPath(state,action);
         case actionTypes.FETCH_FAILED: return fetchFailed(state, action);

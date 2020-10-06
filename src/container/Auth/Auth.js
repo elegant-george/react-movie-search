@@ -1,4 +1,4 @@
-import React, { useState}  from 'react';
+import React, { useState, useEffect}  from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { checkValidity } from '../../shared/utility';
@@ -128,8 +128,12 @@ const Auth = props=> {
         form = <Spinner size={"Big"}/>;
       }
 
-      let errorMessage = null;
+      const onClearError = props.onClearError;
+      useEffect(() => {
+        onClearError();
+      }, [onClearError])
 
+      let errorMessage = null;
       if (props.error) {
         errorMessage = <p>{props.error.message}</p>;
       }
@@ -164,7 +168,8 @@ const mapDispatchToProps = dispatch => {
   return {
     onAuth: (email, password, isSignup, name=null) =>
       dispatch(actions.auth(email, password, isSignup, name)),
-    onSetAuthRedirectPath: () => dispatch(actions.setAuthRedirectPath('/'))
+    onSetAuthRedirectPath: () => dispatch(actions.setAuthRedirectPath('/')),
+    onClearError: () => dispatch(actions.authClearError())
   };
 };
 
