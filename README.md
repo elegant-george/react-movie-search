@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Description
 
-This is a project that connect [OMDb](http://www.omdbapi.com/) API to searh movie data, and create queue or watched list of users.
+This is a project that connect [OMDb](http://www.omdbapi.com/) API to search movie data, and create queue or watched list of users.
 
 ## How to use
 
